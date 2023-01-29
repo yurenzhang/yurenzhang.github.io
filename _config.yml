@@ -20,7 +20,7 @@ title                    : "Kier's Blog"
 title_separator          : "-"
 subtitle                 : # site tagline that appears below site title in masthead
 name                     : "Kier"
-description              : "嗨，我是宇仁。我在这个博客里记录我在安全领域里的一些学习总结笔记。目前我在字节跳动的风控部门带领算法研究团队。"
+description              : ""
 url                      : yurenzhang.github.io"
 baseurl                  : /post"
 repository               : # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
@@ -104,9 +104,9 @@ analytics:
 
 # Site Author
 author:
-  name             : "Hi～😜"
+  name             : "Kier"
   avatar           : # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
-  bio              : "我是宇仁，现在在字节跳动风控带领算法研究团队。安全相关的事情我在不断学习，希望能跟大家交流。"
+  bio              : "安全相关的知识我在不断学习，希望能跟大家交流。"
   location         : "北京-海淀"
   email            : 
   links:
@@ -114,7 +114,7 @@ author:
       icon: "fas fa-fw fa-envelope-square"
       url: "mailto:yuren.zhang@outlook.com"
     - label: "微信: zhangyuren2016"
-      icon: "fas fa-fw fa-link"
+      icon: "fab fa-fw fa-weixin"
       url: "zhangyuren2016"
     - label: "知乎: KKKier"
       icon: "fas fa-fw fa-link"
