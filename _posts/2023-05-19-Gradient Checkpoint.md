@@ -74,6 +74,7 @@ outputs = checkpoint_sequential(modules[1:], 1, mid_result)
 - checkpoint segment = 32：～580M
 
 
-<div id="1">[1] https://github.com/cybertronai/gradient-checkpointing https://doi.org/10.1109/ACCESS.2019.2931579 </div>
+<div id="1">[1] https://github.com/cybertronai/gradient-checkpointing </div>
+<div id="2">[2] https://doi.org/10.1109/ACCESS.2019.2931579 </div>
 
 
