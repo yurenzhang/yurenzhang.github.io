@@ -1,0 +1,61 @@
+---
+layout: post
+title:  "大模型基础Part3 - Warm Up"
+tags: 算法
+excerpt_separator: <!--more-->
+---
+
+<head>
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_SVG" type="text/javascript"></script>
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+            jax: ["input/TeX","output/SVG"],
+            tex2jax: {
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+            inlineMath: [['$','$']]
+            
+            }
+        });
+    </script>
+</head>
+<!--more-->
+
+# Warm Up的作用 [[1]](#1) 
+大部份Transformer架构的模型使用Adam优化器。
+Adam的基本工作原理是：
+
+$$
+g_i = \nabla f_i(\theta) \\
+m_i = \beta_1 m_{i-1} + (1-\beta_1) g_i \\
+v_i = \beta_2 v_{i-1} + (1-\beta_2) g_i^2 \\
+m_i = m_i / (1 - \beta_1^i) \\
+v_i = v_i / (1 - \beta_2^i) \\
+\theta_i = \theta_{i-1} - \alpha m_i / (\sqrt{v_i} + \eta)
+$$
+
+Liu等的文章中提出，在训练的初期，$1/\sqrt{v_i}$部分正比于一个发散的积分。因此在训练早期，用大的学习步长可能导致发散。SGD不会存在这个问题，但用SGD训练层深的模型依然会不收敛，是因为下面这个原因。
+
+LN层的梯度有下列属性：
+
+$$
+\frac{\partial\mathbf{LN}(x)}{\partial x} = O(\frac{\sqrt{d}}{||x||})
+$$
+
+即输入的向量范数越小，梯度越大。当$x$过大时，梯度会随深度增加逐步缩小，这也是加入LN后末层梯度逐步降低的原因之一。
+
+综合起来看，如果在训练初期没有warmup，早期更新幅度会很大，导致$||x||$变大，进而导致LN梯度快速变小，更新幅度快速变小，导致训练不收敛。这基本解释了warm up的作用。
+
+![图](/_posts/warmup.png)
+<p align="center" style="color:gray"> 图1 上方两个图为使用warm up的效果。下方两图为不使用的效果。不使用warm up，梯度会迅速萎缩 [1]。 </p>
+
+
+
+解决发散的问题，有几个可能的方法：
+- 使用warm up 
+- 使用Pre LN
+- 去掉LN层
+- 以及更好的初始化
+
+初始化能做的工作是：在早期约束梯度的大小，让其别发散。
+
+<div id="1"> [1] Huang, X. S., Perez, F., Ba, J., &#38; Volkovs, M. (2020). <i>Improving Transformer Optimization Through Better Initialization</i> (pp. 4475–4483). PMLR. https://proceedings.mlr.press/v119/huang20f.html</div>
