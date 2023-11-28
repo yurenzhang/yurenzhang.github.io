@@ -138,4 +138,4 @@ If there are rules, chances are they can be broken. 不找借口，先想办法�
 
 > Don’t allow the discouragement of others to force compromise upon your ideas. Push. If you can’t get satisfaction with one person or vendor, move to another. If there was one area in which Steve Jobs had a well-deserved reputation for being impossible, this was it. He was relentless about executing ideas and demanding that people perform.
 
-方文山给300个专业人士寄送了歌词，人十我百，在读博时idea的负向反馈中已经习得这个技能了。
+方文山给300个专业人士寄送了歌词，不要被别人的言论影响到信念。
